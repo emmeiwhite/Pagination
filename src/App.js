@@ -10,7 +10,6 @@ function App() {
   const [page, setPage] = useState(1);
   const [start, setStart] = useState(0);
 
-  console.log(data);
   return (
     <main className="section">
       <h3 className="section-title">
@@ -32,7 +31,9 @@ function App() {
       <section className="btn-container">
         <p className="prev-btn">prev</p>
         {btns.map((btn, index) => (
-          <button className="page-btn">{btn}</button>
+          <button key={index} className="page-btn">
+            {btn}
+          </button>
         ))}
         <p className="next-btn">next</p>
       </section>

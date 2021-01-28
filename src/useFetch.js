@@ -6,15 +6,16 @@ export const useFetch = (url) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getProducts = async () => {
+  const getData = async () => {
     const response = await fetch(url);
     const data = await response.json();
     setData(data);
+    paginate(data); // Sending data to the paginate function. Idea is to pipe our data through the paginate
     setLoading(false);
   };
 
   useEffect(() => {
-    getProducts();
+    getData();
   }, []);
   return { loading, data };
 };
