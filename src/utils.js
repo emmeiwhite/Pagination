@@ -9,13 +9,12 @@ const paginate = (followers) => {
   //   console.log(newFollowers); // We use this newFollwers as our array of arrays
 
   let start = 0;
-  let end = pages;
   newFollowers.forEach((array, index) => {
     newFollowers[index] = followers.slice(start, (index + 1) * itemsPerPage);
     start = (index + 1) * itemsPerPage;
   });
 
-  console.log(newFollowers);
+  return newFollowers;
 };
 
 export default paginate;

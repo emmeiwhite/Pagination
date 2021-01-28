@@ -9,8 +9,9 @@ export const useFetch = (url) => {
   const getData = async () => {
     const response = await fetch(url);
     const data = await response.json();
-    setData(data);
-    paginate(data); // Sending data to the paginate function. Idea is to pipe our data through the paginate
+
+    const updatedArray = paginate(data); // Sending data to the paginate function. Idea is to pipe our data through the paginate
+    setData(updatedArray);
     setLoading(false);
   };
 
