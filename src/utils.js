@@ -1,3 +1,3 @@
-const paginate = () => {}
+const paginate = (page) => {};
 
-export default paginate
+export default paginate;
