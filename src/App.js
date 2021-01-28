@@ -8,6 +8,28 @@ function App() {
   const [activePage, setActivePage] = useState(0);
   console.log(data); // Array of arrays now
 
+  // One Handler to handle them all :)
+  const handleClick = (page) => {
+    setActivePage(page);
+  };
+
+  const handlePrev = () => {
+    if (activePage === 0) {
+      setActivePage(data.length - 1);
+      return;
+    }
+
+    setActivePage(activePage - 1);
+  };
+
+  const handleNext = () => {
+    if (activePage === 11) {
+      setActivePage(0);
+      return;
+    }
+
+    setActivePage(activePage + 1);
+  };
   return (
     <main className="section">
       <h3 className="section-title">
@@ -25,13 +47,21 @@ function App() {
       {/* Pagination Code */}
 
       <section className="btn-container">
-        <p className="prev-btn">prev</p>
+        <p className="prev-btn" onClick={handlePrev}>
+          prev
+        </p>
         {data.map((data, index) => (
-          <button key={index} className="page-btn">
+          <button
+            key={index}
+            className="page-btn"
+            onClick={() => handleClick(index)}
+          >
             {index + 1}
           </button>
         ))}
-        <p className="next-btn">next</p>
+        <p className="next-btn" onClick={handleNext}>
+          next
+        </p>
       </section>
     </main>
   );
